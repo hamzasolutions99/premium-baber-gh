@@ -1,0 +1,2428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Premium Barber GH in Kumasi. Professional haircuts, fades, shaves and grooming. Book your appointment today.">
+  <title>Premium Barber GH | Professional Grooming in Kumasi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #111111;
+      --black-soft: #191919;
+      --black-card: #202020;
+      --red: #e32636;
+      --red-dark: #b91e2b;
+      --white: #ffffff;
+      --cream: #f7f5f1;
+      --grey: #777777;
+      --muted: #aaaaaa;
+      --border: #e8e5e0;
+      --green: #218b4e;
+      --ash: #858585;
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --container: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(42px, 6vw, 65px);
+      line-height: .98;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .section-heading p {
+      color: var(--grey);
+      line-height: 1.8;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 25px;
+      background: var(--red);
+      color: white;
+      border: 1px solid var(--red);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: .25s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--red-dark);
+      border-color: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(255,255,255,.65);
+    }
+
+    .btn-outline:hover {
+      background: white;
+      border-color: white;
+      color: var(--black);
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      height: 82px;
+      background: var(--black);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      background: var(--red);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 24px;
+      transform: skew(-5deg);
+    }
+
+    .brand-text {
+      font-family: var(--font-heading);
+      font-size: 25px;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: .9;
+    }
+
+    .brand-text span {
+      color: var(--red);
+    }
+
+    .brand-text small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 8px;
+      letter-spacing: 3px;
+      margin-top: 5px;
+      color: #aaa;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #d0d0d0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-book {
+      padding: 12px 17px;
+      background: var(--red);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: white;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+
+/* ============================
+   RESPONSIVE HERO SECTION
+============================ */
+
+.hero {
+  min-height: 680px;
+  min-height: clamp(560px, 82vh, 780px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 8, 8, 0.98) 0%,
+      rgba(8, 8, 8, 0.88) 38%,
+      rgba(8, 8, 8, 0.45) 72%,
+      rgba(8, 8, 8, 0.35) 100%
+    ),
+    url("images/barber-hero.jpg") center center / cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -140px;
+  bottom: -260px;
+  width: 500px;
+  height: 500px;
+  border: 75px solid rgba(227, 38, 54, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 700px;
+  padding: 100px 0;
+}
+
+.hero-tag {
+  display: inline-block;
+  border-left: 3px solid var(--red);
+  padding-left: 13px;
+  color: #ddd;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 23px;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(65px, 9vw, 112px);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: -1px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.hero h1 span {
+  color: var(--red);
+}
+
+.hero p {
+  max-width: 480px;
+  color: #c0c0c0;
+  font-size: clamp(13px, 1.3vw, 15px);
+  line-height: 1.8;
+  margin: 25px 0 30px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-actions .btn {
+  min-height: 48px;
+}
+
+.hero-note {
+  margin-top: 38px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #bbb;
+  font-size: 12px;
+}
+
+.hero-note strong {
+  color: #fff;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* TABLETS */
+@media (max-width: 850px) {
+  .hero {
+    min-height: 620px;
+    background-position: 60% center;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(8, 8, 8, 0.97) 0%,
+        rgba(8, 8, 8, 0.83) 48%,
+        rgba(8, 8, 8, 0.45) 100%
+      ),
+      url("images/barber-hero.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .hero-content {
+    max-width: 580px;
+    padding: 85px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(65px, 11vw, 90px);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 560px) {
+  .hero {
+    min-height: 650px;
+    min-height: 78svh;
+    background-position: 62% center;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(8, 8, 8, 0.94) 0%,
+        rgba(8, 8, 8, 0.82) 55%,
+        rgba(8, 8, 8, 0.55) 100%
+      ),
+      url("images/barber-hero.jpg");
+  }
+
+  .hero-content {
+    padding: 75px 0 65px;
+    max-width: 100%;
+  }
+
+  .hero-tag {
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 15vw, 78px);
+    line-height: 0.91;
+    letter-spacing: -1.5px;
+  }
+
+  .hero p {
+    font-size: 13px;
+    line-height: 1.75;
+    max-width: 340px;
+    margin: 22px 0 25px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 310px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    padding: 15px 12px;
+    font-size: 11px;
+  }
+
+  .hero-note {
+    margin-top: 27px;
+    font-size: 10px;
+  }
+
+  .hero::after {
+    width: 300px;
+    height: 300px;
+    right: -170px;
+    bottom: -180px;
+    border-width: 45px;
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 380px) {
+  .hero {
+    min-height: 620px;
+    background-position: 65% center;
+  }
+
+  .hero h1 {
+    font-size: 55px;
+  }
+
+  .hero-tag {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero p {
+    font-size: 12px;
+  }
+
+  .hero-actions {
+    max-width: 100%;
+  }
+}
+
+/* LANDSCAPE PHONES */
+@media (max-height: 500px) and (max-width: 900px) {
+  .hero {
+    min-height: 560px;
+  }
+
+  .hero-content {
+    padding: 65px 0;
+  }
+}
+
+
+    /* QUICK INFO STRIP */
+
+    .info-strip {
+      background: var(--red);
+      color: white;
+      padding: 24px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .info-icon {
+      width: 45px;
+      height: 45px;
+      border: 1px solid rgba(255,255,255,.4);
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+      flex-shrink: 0;
+    }
+
+    .info-item strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 4px;
+    }
+
+    .info-item span {
+      color: rgba(255,255,255,.8);
+      font-size: 11px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 75px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+      padding: 0 25px 25px 0;
+    }
+
+    .about-image {
+      height: 520px;
+      background: #ddd;
+    }
+
+    .about-image img {
+      height: 100%;
+    }
+
+    .about-image-wrap::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 65%;
+      height: 65%;
+      border-right: 7px solid var(--red);
+      border-bottom: 7px solid var(--red);
+      z-index: -1;
+    }
+
+    .about-copy h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(43px, 6vw, 66px);
+      text-transform: uppercase;
+      line-height: .95;
+      margin-bottom: 20px;
+    }
+
+    .about-copy h2 span {
+      color: var(--red);
+    }
+
+    .about-copy p {
+      color: var(--grey);
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 17px;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 25px 0 30px;
+    }
+
+    .about-point {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .about-point span {
+      color: var(--red);
+      font-size: 18px;
+    }
+
+    /* SERVICES */
+
+    .services-section {
+      background: var(--cream);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 27px;
+      border: 1px solid var(--border);
+      transition: .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--red);
+      box-shadow: 0 15px 35px rgba(0,0,0,.07);
+    }
+
+    .service-number {
+      font-family: var(--font-heading);
+      font-size: 38px;
+      font-weight: 800;
+      color: #e9e6e1;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--grey);
+      font-size: 12px;
+      line-height: 1.7;
+      min-height: 42px;
+    }
+
+    .service-bottom {
+      border-top: 1px solid var(--border);
+      margin-top: 22px;
+      padding-top: 17px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .service-price {
+      font-weight: 800;
+      color: var(--red);
+      font-size: 15px;
+    }
+
+    .service-link {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* CTA BANNER */
+
+    .cta-banner {
+      position: relative;
+      padding: 75px 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.93), rgba(0,0,0,.68)),
+        url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85") center/cover;
+      color: white;
+    }
+
+    .cta-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .cta-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 6vw, 64px);
+      text-transform: uppercase;
+      line-height: .95;
+    }
+
+    .cta-content p {
+      color: #ccc;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 240px;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      transition: transform .5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 60%, rgba(0,0,0,.6));
+      pointer-events: none;
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      z-index: 2;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* REVIEWS */
+
+    .reviews-section {
+      background: var(--black);
+      color: white;
+    }
+
+    .reviews-section .section-heading p {
+      color: #aaa;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .review-card {
+      padding: 28px;
+      background: var(--black-soft);
+      border: 1px solid #303030;
+    }
+
+    .review-stars {
+      color: #f4bb39;
+      letter-spacing: 3px;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .review-card p {
+      color: #ddd;
+      font-size: 13px;
+      line-height: 1.8;
+      min-height: 75px;
+    }
+
+    .review-person {
+      border-top: 1px solid #343434;
+      padding-top: 17px;
+      margin-top: 20px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .review-person span {
+      display: block;
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* BOOKING SECTION */
+
+    .booking-section {
+      background: var(--cream);
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .calendar-card,
+    .booking-form-card {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 30px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.035);
+    }
+
+    .booking-card-heading {
+      margin-bottom: 24px;
+    }
+
+    .booking-card-heading h3 {
+      font-family: var(--font-heading);
+      font-size: 29px;
+      text-transform: uppercase;
+    }
+
+    .booking-card-heading p {
+      color: var(--grey);
+      font-size: 12px;
+      margin-top: 5px;
+      line-height: 1.6;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .calendar-header h4 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    .calendar-nav {
+      display: flex;
+      gap: 7px;
+    }
+
+    .calendar-nav button {
+      width: 37px;
+      height: 37px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--black);
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .calendar-nav button:hover:not(:disabled) {
+      background: var(--red);
+      color: white;
+      border-color: var(--red);
+    }
+
+    .calendar-nav button:disabled {
+      opacity: .3;
+      cursor: not-allowed;
+    }
+
+    .weekdays,
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 7px;
+    }
+
+    .weekdays {
+      margin-bottom: 10px;
+    }
+
+    .weekday {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: #777;
+      text-transform: uppercase;
+      padding: 7px 0;
+    }
+
+    .calendar-day {
+      min-width: 0;
+      min-height: 66px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: .2s;
+      color: white;
+    }
+
+    .calendar-day .day-number {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .calendar-day .day-status {
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    .calendar-day.available {
+      background: #e6f5eb;
+      border-color: #b8e1c6;
+      color: #176c39;
+    }
+
+    .calendar-day.available:hover {
+      background: #c9ead5;
+      border-color: var(--green);
+    }
+
+    .calendar-day.full {
+      background: #fce8e9;
+      border-color: #f3c4c7;
+      color: #b51f2b;
+      cursor: not-allowed;
+    }
+
+    .calendar-day.closed,
+    .calendar-day.past,
+    .calendar-day.unavailable {
+      background: #e8e8e8;
+      border-color: #dedede;
+      color: #777;
+      cursor: not-allowed;
+    }
+
+    .calendar-day.selected {
+      background: var(--black);
+      border: 2px solid var(--red);
+      color: white;
+      box-shadow: 0 0 0 2px rgba(227,38,54,.12);
+    }
+
+    .calendar-day.empty {
+      background: transparent;
+      border-color: transparent;
+      cursor: default;
+    }
+
+    .calendar-day:disabled {
+      opacity: 1;
+    }
+
+    .calendar-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-top: 22px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      color: #666;
+      font-weight: 700;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    .legend-dot.green { background: var(--green); }
+    .legend-dot.red { background: var(--red); }
+    .legend-dot.ash { background: var(--ash); }
+
+    .selected-date-note {
+      background: #f8f8f8;
+      border-left: 3px solid var(--red);
+      padding: 12px 14px;
+      margin-top: 18px;
+      font-size: 11px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .selected-date-note strong {
+      color: var(--black);
+    }
+
+    .booking-form-card form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #dedede;
+      background: #fafafa;
+      color: var(--black);
+      border-radius: 2px;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red);
+      background: white;
+    }
+
+    .form-group textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .booking-summary {
+      padding: 16px;
+      background: var(--black);
+      color: white;
+      border-left: 3px solid var(--red);
+    }
+
+    .booking-summary small {
+      display: block;
+      color: #aaa;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .booking-summary strong {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    .booking-summary p {
+      font-size: 11px;
+      color: #bbb;
+      margin-top: 5px;
+      line-height: 1.6;
+    }
+
+    .booking-submit {
+      width: 100%;
+      border: 0;
+    }
+
+    .booking-disclaimer {
+      color: #777;
+      font-size: 10px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* CONTACT */
+
+    .contact-section {
+      background: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 22px;
+      margin-top: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .contact-icon {
+      width: 43px;
+      height: 43px;
+      background: #fff0f1;
+      color: var(--red);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .contact-item p,
+    .contact-item a {
+      color: var(--grey);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .hours-box {
+      background: var(--black);
+      color: white;
+      padding: 30px;
+    }
+
+    .hours-box h3 {
+      font-family: var(--font-heading);
+      font-size: 30px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid #333;
+      font-size: 12px;
+    }
+
+    .hours-row span:last-child {
+      color: #ccc;
+      text-align: right;
+    }
+
+    .hours-row.closed-day span:last-child {
+      color: #ff747e;
+    }
+
+    .map-link {
+      display: inline-flex;
+      margin-top: 25px;
+      color: white;
+      background: var(--red);
+      padding: 13px 17px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0b0b0b;
+      color: white;
+      padding: 65px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 45px;
+    }
+
+    .footer-about p {
+      color: #999;
+      font-size: 12px;
+      line-height: 1.8;
+      max-width: 320px;
+      margin-top: 18px;
+    }
+
+    .footer-column h4 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #999;
+      font-size: 12px;
+      margin-bottom: 13px;
+      transition: .2s;
+    }
+
+    .footer-column a:hover {
+      color: var(--red);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 39px;
+      height: 39px;
+      border: 1px solid #383838;
+      color: white;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      transition: .2s;
+    }
+
+    .social-links a:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: white;
+    }
+
+    .social-links svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #292929;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      color: #777;
+      font-size: 10px;
+    }
+
+    .footer-bottom a {
+      color: white;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 16px;
+      }
+
+      .nav-links a {
+        font-size: 9px;
+      }
+
+      .about-grid {
+        gap: 35px;
+      }
+
+      .booking-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item:first-child {
+        grid-row: span 1;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(100% - 30px, var(--container));
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .navbar {
+        height: 72px;
+      }
+
+      .brand-mark {
+        width: 37px;
+        height: 37px;
+      }
+
+      .brand-text {
+        font-size: 22px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        padding: 10px 20px 22px;
+        background: var(--black);
+        border-top: 1px solid #292929;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 14px 0;
+        border-bottom: 1px solid #292929;
+        font-size: 11px;
+      }
+
+      .nav-book {
+        display: none;
+      }
+
+      .hero,
+      .hero-content {
+        min-height: 590px;
+      }
+
+      .hero h1 {
+        font-size: clamp(62px, 16vw, 85px);
+      }
+
+      .hero-copy p {
+        font-size: 12px;
+      }
+
+      .slider-controls {
+        right: 15px;
+        bottom: 20px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .info-item {
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255,255,255,.2);
+      }
+
+      .info-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .about-image {
+        height: 370px;
+      }
+
+      .about-copy h2 {
+        font-size: 52px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card p {
+        min-height: auto;
+      }
+
+      .cta-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 170px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-card p {
+        min-height: auto;
+      }
+
+      .calendar-card,
+      .booking-form-card {
+        padding: 18px 13px;
+      }
+
+      .calendar-days,
+      .weekdays {
+        gap: 4px;
+      }
+
+      .calendar-day {
+        min-height: 52px;
+      }
+
+      .calendar-day .day-number {
+        font-size: 13px;
+      }
+
+      .calendar-day .day-status {
+        font-size: 7px;
+      }
+
+      .calendar-legend {
+        gap: 10px;
+      }
+
+      .legend-item {
+        font-size: 9px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 20px;
+      }
+
+      .footer-about {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .calendar-day {
+        min-height: 46px;
+      }
+
+      .calendar-day .day-status {
+        font-size: 6px;
+      }
+
+      .brand-text {
+        font-size: 19px;
+      }
+
+      .hero-buttons .btn {
+        padding: 13px 15px;
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>Premium Barber GH | Professional Grooming in Kumasi</title>
+<meta name="description" content="Premium Barber GH offers professional haircuts, shaving and grooming services in Kumasi, Ghana. Book your appointment today.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red:#e32636;
+  --red-dark:#b91525;
+  --black:#101010;
+  --black2:#171717;
+  --dark:#202020;
+  --white:#fff;
+  --grey:#a5a5a5;
+  --light:#f5f5f5;
+  --border:#303030;
+  --green:#239b56;
+  --ash:#777;
+  --font-heading:'Barlow Condensed',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:min(1160px,92%);margin:auto}
+.section{padding:90px 0}
+.section-heading{text-align:center;margin-bottom:45px}
+.section-heading .eyebrow{color:var(--red);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.section-heading h2{font-family:var(--font-heading);font-size:clamp(38px,6vw,58px);text-transform:uppercase;line-height:1.05;margin-top:9px}
+.section-heading p{color:var(--grey);max-width:580px;margin:12px auto 0;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border:0;background:var(--red);color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:12px;transition:.25s}
+.btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:1px solid #777}
+.btn-outline:hover{background:var(--red);border-color:var(--red)}
+/* Announcement */
+.announcement{background:var(--red);text-align:center;padding:9px 15px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+/* Header */
+.header{position:sticky;top:0;z-index:1000;background:rgba(12,12,12,.96);backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{font-family:var(--font-heading);font-size:29px;font-weight:900;line-height:1;text-transform:uppercase;letter-spacing:.5px}
+.logo span{color:var(--red)}
+.logo small{display:block;font-family:var(--font-body);font-size:8px;letter-spacing:4px;color:#aaa;text-align:center;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:29px}
+.nav-links a{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:800;color:#ddd;transition:.2s}
+.nav-links a:hover{color:var(--red)}
+.menu-toggle{display:none;background:none;border:0;color:#fff;font-size:27px}
+/* Hero */
+.hero{min-height:640px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,#080808 0%,rgba(8,8,8,.95) 42%,rgba(8,8,8,.35) 100%),url('images/barber-hero.jpg') center/cover no-repeat}
+.hero::after{content:"";position:absolute;right:-100px;bottom:-250px;width:500px;height:500px;border:80px solid rgba(227,38,54,.12);border-radius:50%}
+.hero-content{position:relative;z-index:2;max-width:690px;padding:100px 0}
+.hero-tag{display:inline-block;border-left:3px solid var(--red);padding-left:13px;color:#ddd;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:3px;margin-bottom:23px}
+.hero h1{font-family:var(--font-heading);font-size:clamp(60px,10vw,112px);font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-1px}
+.hero h1 span{color:var(--red)}
+.hero p{max-width:500px;color:#c0c0c0;font-size:15px;margin:25px 0 30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-note{margin-top:38px;display:flex;align-items:center;gap:12px;color:#bbb;font-size:12px}
+.hero-note strong{color:#fff}
+.hero-dot{width:8px;height:8px;background:var(--red);border-radius:50%}
+/* Info strip */
+.info-strip{background:#191919;border-top:1px solid #292929;border-bottom:1px solid #292929}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.info-item{padding:25px 18px;text-align:center;border-right:1px solid #303030}
+.info-item:last-child{border:0}
+.info-item strong{display:block;font-family:var(--font-heading);font-size:23px;text-transform:uppercase}
+.info-item span{color:#999;font-size:11px}
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+.about-image{min-height:450px;background:linear-gradient(0deg,rgba(0,0,0,.3),rgba(0,0,0,.1)),url('images/barber-about.jpg') center/cover;background-color:#262626;position:relative}
+.about-image::after{content:"PREMIUM BARBER GH";position:absolute;bottom:22px;left:22px;font-family:var(--font-heading);font-size:28px;font-weight:900}
+.about-copy .eyebrow{color:var(--red);font-size:12px;font-weight:800;letter-spacing:3px}
+.about-copy h2{font-family:var(--font-heading);font-size:clamp(42px,5vw,60px);text-transform:uppercase;line-height:1;margin:13px 0 20px}
+.about-copy p{color:#aaa;font-size:14px;margin-bottom:17px}
+.about-points{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:25px 0}
+.about-point{border-left:2px solid var(--red);padding-left:12px;font-size:12px;font-weight:700}
+/* Services */
+.services{background:#171717}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.service-card{background:#202020;border:1px solid #303030;padding:25px;transition:.25s}
+.service-card:hover{border-color:var(--red);transform:translateY(-4px)}
+.service-number{font-family:var(--font-heading);font-size:35px;color:var(--red);font-weight:900}
+.service-card h3{font-family:var(--font-heading);font-size:25px;text-transform:uppercase;margin:5px 0}
+.service-card p{font-size:12px;color:#999;min-height:40px}
+.service-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #383838;padding-top:15px;margin-top:18px}
+.service-price{font-weight:800;font-size:17px}
+.service-book{font-size:11px;text-transform:uppercase;color:var(--red);font-weight:800}
+/* CTA */
+.cta-band{background:var(--red);padding:50px 0}
+.cta-content{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.cta-content h2{font-family:var(--font-heading);font-size:clamp(35px,5vw,52px);text-transform:uppercase;line-height:1}
+.cta-content p{font-size:13px;margin-top:8px;color:#ffe2e5}
+.cta-band .btn{background:#111;white-space:nowrap}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery-item{height:260px;background:#252525;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.gallery-item:hover img{transform:scale(1.06)}
+/* Reviews */
+.reviews{background:#171717}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.review-card{background:#202020;border:1px solid #303030;padding:25px}
+.stars{color:#f5b642;letter-spacing:3px}
+.review-card p{font-size:13px;color:#ccc;margin:16px 0 20px}
+.review-card strong{font-size:12px;text-transform:uppercase}
+/* Booking */
+.booking-section{background:#111}
+.booking-layout{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:start}
+.booking-panel{background:#1b1b1b;border:1px solid #303030;padding:25px}
+.panel-title{font-family:var(--font-heading);font-size:28px;text-transform:uppercase;margin-bottom:5px}
+.panel-subtitle{font-size:12px;color:#999;margin-bottom:20px}
+.calendar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}
+.calendar-top h3{font-family:var(--font-heading);font-size:24px;text-transform:uppercase}
+.calendar-nav{display:flex;gap:7px}
+.calendar-nav button{width:34px;height:34px;background:#292929;border:1px solid #444;color:white}
+.calendar-weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.calendar-weekdays div{text-align:center;color:#888;font-size:10px;font-weight:800;padding:8px 0}
+.calendar-day{min-height:43px;border:1px solid transparent;background:#292929;color:#fff;font-size:12px;font-weight:700;position:relative}
+.calendar-day.available{background:rgba(35,155,86,.2);border-color:#239b56;color:#80e5a8}
+.calendar-day.full{background:rgba(227,38,54,.2);border-color:#e32636;color:#ff8b96}
+.calendar-day.closed,.calendar-day.unavailable,.calendar-day.past{background:#353535;color:#858585;border-color:#414141}
+.calendar-day.selected{outline:2px solid #fff;outline-offset:1px}
+.calendar-day:disabled{cursor:not-allowed;opacity:.7}
+.calendar-day:not(:disabled):hover{filter:brightness(1.35)}
+.calendar-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:10px;color:#aaa}
+.legend-dot{height:9px;width:9px;border-radius:2px}
+.legend-dot.green{background:var(--green)}
+.legend-dot.red{background:var(--red)}
+.legend-dot.ash{background:var(--ash)}
+.selected-date-label{margin-top:18px;padding:12px;background:#242424;font-size:12px;color:#ddd}
+.booking-form{display:grid;gap:14px}
+.form-group label{display:block;font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:1px;margin-bottom:7px;color:#ccc}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:#101010;border:1px solid #414141;padding:13px;color:#fff;outline:none;border-radius:0}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--red)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.booking-notice{font-size:11px;color:#aaa;background:#252525;padding:12px;border-left:3px solid var(--red)}
+.booking-submit{width:100%;padding:16px}
+.form-message{display:none;padding:12px;font-size:12px;margin-top:12px}
+.form-message.success{display:block;background:#153b27;color:#a8f0c3}
+.form-message.error{display:block;background:#4a2024;color:#ffb5bd}
+.time-help{font-size:10px;color:#999;margin-top:6px}
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.contact-card{background:#1b1b1b;padding:27px;border:1px solid #303030}
+.contact-card h3{font-family:var(--font-heading);font-size:28px;text-transform:uppercase;margin-bottom:18px}
+.contact-line{padding:13px 0;border-bottom:1px solid #303030;font-size:13px;color:#bbb}
+.contact-line strong{display:block;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.hours-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #303030;font-size:12px;color:#bbb}
+.hours-row.closed-day span:last-child{color:#aaa}
+.map-placeholder{min-height:260px;background:#242424;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;border:1px solid #303030}
+.map-placeholder p{font-size:13px;color:#aaa;margin:10px 0 17px}
+/* Footer */
+.footer{background:#080808;border-top:1px solid #303030;padding:45px 0 20px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:35px;padding-bottom:35px}
+.footer p{font-size:12px;color:#999;margin-top:13px;max-width:320px}
+.footer h4{font-family:var(--font-heading);font-size:21px;text-transform:uppercase;margin-bottom:13px}
+.footer-links{display:grid;gap:9px;font-size:12px;color:#aaa}
+.footer-links a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid #252525;padding-top:18px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:10px;color:#777}
+/* Responsive */
+@media(max-width:850px){
+ .nav-links{display:none;position:absolute;top:78px;left:0;right:0;background:#111;padding:25px 5%;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start;gap:20px}
+ .nav-links.open{display:flex}
+ .menu-toggle{display:block}
+ .about-grid,.booking-layout,.contact-grid{grid-template-columns:1fr}
+ .service-grid{grid-template-columns:repeat(2,1fr)}
+ .gallery-grid{grid-template-columns:repeat(2,1fr)}
+ .review-grid{grid-template-columns:1fr}
+ .about-image{min-height:350px}
+}
+@media(max-width:560px){
+ .section{padding:65px 0}
+ .hero{min-height:570px;background-position:60% center}
+ .hero-content{padding:75px 0}
+ .hero h1{font-size:65px}
+ .info-grid{grid-template-columns:1fr}
+ .info-item{border-right:0;border-bottom:1px solid #303030;padding:16px}
+ .service-grid{grid-template-columns:1fr}
+ .gallery-item{height:190px}
+ .cta-content{align-items:flex-start;flex-direction:column}
+ .booking-panel{padding:17px}
+ .calendar-weekdays,.calendar-grid{gap:3px}
+ .calendar-day{min-height:39px;font-size:11px}
+ .form-row{grid-template-columns:1fr}
+ .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="announcement">Premium grooming. Excellent service. Book your appointment today.</div>
+
+<header class="header">
+  <div class="container nav">
+    <a href="#" class="logo">PREMIUM <span>BARBER</span><small>GH</small></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#booking">Book Appointment</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">Your grooming experience starts here</div>
+      <h1>LOOK<br>SHARP.<br><span>FEEL</span> GREAT.</h1>
+      <p>Get the fresh look you deserve. Professional haircuts, clean shaves and quality grooming services in Kumasi.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn">Book An Appointment ↗</a>
+        <a href="#services" class="btn btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-note"><span class="hero-dot"></span><span><strong>Premium Barber GH</strong> · Kumasi, Ghana</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-strip">
+  <div class="container info-grid">
+    <div class="info-item"><strong>Professional</strong><span>Quality grooming services</span></div>
+    <div class="info-item"><strong>Customer First</strong><span>Your satisfaction matters</span></div>
+    <div class="info-item"><strong>Book With Ease</strong><span>Choose your preferred date</span></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-image" role="img" aria-label="Barber shop interior"></div>
+    <div class="about-copy">
+      <span class="eyebrow">About Premium Barber GH</span>
+      <h2>MORE THAN JUST A HAIRCUT.</h2>
+      <p>At Premium Barber GH, we believe a great haircut is part of how you present yourself to the world. Our goal is to give every customer a professional grooming experience.</p>
+      <p>From clean cuts and sharp shape-ups to quality shaving services, we focus on attention to detail and customer satisfaction.</p>
+      <div class="about-points">
+        <div class="about-point">Professional grooming</div>
+        <div class="about-point">Friendly service</div>
+        <div class="about-point">Attention to detail</div>
+        <div class="about-point">Convenient booking</div>
+      </div>
+      <a href="#booking" class="btn">Schedule Your Visit</a>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Our Grooming Services</h2>
+      <p>Choose from our range of grooming services and book a time that works for you.</p>
+    </div>
+    <div class="service-grid" id="serviceGrid">
+      <article class="service-card">
+        <div class="service-number">01</div><h3>Buzz Cut</h3>
+        <p>A clean, simple and sharp haircut.</p>
+        <div class="service-bottom"><span class="service-price">GH₵50</span><a class="service-book" href="#booking" data-service="Buzz Cut">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">02</div><h3>Curly Hair</h3>
+        <p>Professional styling and grooming for curly hair.</p>
+        <div class="service-bottom"><span class="service-price">GH₵80</span><a class="service-book" href="#booking" data-service="Curly Hair">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">03</div><h3>Hair Shape-Up</h3>
+        <p>Keep your hairline and edges looking fresh.</p>
+        <div class="service-bottom"><span class="service-price">GH₵40</span><a class="service-book" href="#booking" data-service="Hair Shape-Up">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">04</div><h3>Head Shave</h3>
+        <p>A clean and professional head shave.</p>
+        <div class="service-bottom"><span class="service-price">GH₵50</span><a class="service-book" href="#booking" data-service="Head Shave">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">05</div><h3>Regular Shave</h3>
+        <p>A neat and comfortable regular shave.</p>
+        <div class="service-bottom"><span class="service-price">GH₵30</span><a class="service-book" href="#booking" data-service="Regular Shave">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">06</div><h3>Straight Razor Shave</h3>
+        <p>A precise shave for a clean finish.</p>
+        <div class="service-bottom"><span class="service-price">GH₵50</span><a class="service-book" href="#booking" data-service="Straight Razor Shave">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">07</div><h3>Hair Colouring</h3>
+        <p>Refresh your look with professional hair colouring.</p>
+        <div class="service-bottom"><span class="service-price">From GH₵100</span><a class="service-book" href="#booking" data-service="Hair Colouring">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">08</div><h3>Permanent Hair Dye</h3>
+        <p>Personalise your style with a lasting colour.</p>
+        <div class="service-bottom"><span class="service-price">From GH₵150</span><a class="service-book" href="#booking" data-service="Permanent Hair Dye">Book Now ↗</a></div>
+      </article>
+      <article class="service-card">
+        <div class="service-number">09</div><h3>Ladies Permed Cut</h3>
+        <p>Professional grooming and styling service.</p>
+        <div class="service-bottom"><span class="service-price">GH₵80</span><a class="service-book" href="#booking" data-service="Ladies Permed Cut">Book Now ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-content">
+    <div><h2>READY FOR A FRESH LOOK?</h2><p>Choose your service and reserve your preferred appointment date.</p></div>
+    <a href="#booking" class="btn">Book Your Appointment ↗</a>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Our Work</span>
+      <h2>The Barber Experience</h2>
+      <p>A look at the atmosphere and grooming experience at Premium Barber GH.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Barber haircut" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Barber grooming" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Fresh haircut" loading="lazy"></div>
+      <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Barber shop" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews" id="reviews">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Customer Feedback</span>
+      <h2>What Customers Say</h2>
+      <p>We appreciate every customer who trusts us with their grooming.</p>
+    </div>
+    <div class="review-grid">
+      <article class="review-card"><div class="stars">★★★★★</div><p>“I had a good an experience with Premium!”</p><strong>Qwaku Premo</strong></article>
+      <article class="review-card"><div class="stars">★★★★★</div><p>“Excellent service! If you are visiting from abroad this is the place to get your cut!”</p><strong>Nathaniel Boateng</strong></article>
+      <article class="review-card"><div class="stars">★★★★★</div><p>“The best barber in Kumasi!”</p><strong>Emmanuel Ofori Sarpong</strong></article>
+    </div>
+  </div>
+</section>
+
+<section class="section booking-section" id="booking">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Reserve Your Visit</span>
+      <h2>Book An Appointment</h2>
+      <p>Select an available date, choose a service and send your appointment request.</p>
+    </div>
+
+    <div class="booking-layout">
+      <div class="booking-panel">
+        <h3 class="panel-title">Booking Calendar</h3>
+        <p class="panel-subtitle">Choose a date to see its availability.</p>
+        <div class="calendar-top">
+          <h3 id="calendarMonth">Month Year</h3>
+          <div class="calendar-nav">
+            <button type="button" id="prevMonth" aria-label="Previous month">‹</button>
+            <button type="button" id="nextMonth" aria-label="Next month">›</button>
+          </div>
+        </div>
+        <div class="calendar-weekdays">
+          <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+        <div class="calendar-legend">
+          <div class="legend-item"><span class="legend-dot green"></span>Available</div>
+          <div class="legend-item"><span class="legend-dot red"></span>Fully booked</div>
+          <div class="legend-item"><span class="legend-dot ash"></span>Closed / unavailable</div>
+        </div>
+        <div class="selected-date-label" id="selectedDateLabel">Select an available date to continue.</div>
+      </div>
+
+      <div class="booking-panel">
+        <h3 class="panel-title">Your Details</h3>
+        <p class="panel-subtitle">Complete the form to submit your appointment request.</p>
+        <form id="bookingForm" class="booking-form">
+          <div class="form-group">
+            <label for="customerName">Full Name *</label>
+            <input id="customerName" name="name" type="text" placeholder="Enter your full name" required maxlength="80">
+          </div>
+          <div class="form-group">
+            <label for="customerPhone">Phone Number *</label>
+            <input id="customerPhone" name="phone" type="tel" placeholder="e.g. 0551234567" required maxlength="20">
+          </div>
+          <div class="form-group">
+            <label for="serviceSelect">Select Service *</label>
+            <select id="serviceSelect" name="service" required>
+              <option value="">Choose a service</option>
+              <option>Buzz Cut</option>
+              <option>Curly Hair</option>
+              <option>Hair Shape-Up</option>
+              <option>Head Shave</option>
+              <option>Regular Shave</option>
+              <option>Straight Razor Shave</option>
+              <option>Hair Colouring</option>
+              <option>Permanent Hair Dye</option>
+              <option>Ladies Permed Cut</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bookingDate">Appointment Date *</label>
+              <input id="bookingDate" name="date" type="date" required readonly>
+            </div>
+            <div class="form-group">
+              <label for="bookingTime">Available Time *</label>
+              <select id="bookingTime" name="time" required disabled>
+                <option value="">Select date first</option>
+              </select>
+              <div class="time-help" id="timeHelp">Choose an available date on the calendar.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bookingNote">Additional Note</label>
+            <textarea id="bookingNote" name="note" placeholder="Anything we should know?"></textarea>
+          </div>
+          <div class="booking-notice">Submitting this form records your request in the demo booking system and opens WhatsApp. Your appointment is not confirmed until the barber confirms it.</div>
+          <button type="submit" class="btn booking-submit" id="bookingSubmit">Send Appointment Request ↗</button>
+          <div class="form-message" id="formMessage" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Find Us</span>
+      <h2>Visit Premium Barber GH</h2>
+      <p>Get in touch or find your way to our location in Kumasi.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contact Details</h3>
+        <div class="contact-line"><strong>Location</strong>P94H+68W, 100 Pinanko Road, Kumasi, Ghana</div>
+        <div class="contact-line"><strong>Call Us</strong><a href="tel:+233240211473">+233 24 021 1473</a></div>
+        <div class="contact-line"><strong>WhatsApp</strong><a href="https://wa.me/233554890113" target="_blank" rel="noopener">055 489 0113</a></div>
+        <div class="contact-line"><strong>Instagram</strong><a href="https://www.instagram.com/premium_barber_gh/" target="_blank" rel="noopener">@premium_barber_gh</a></div>
+        <div class="contact-line"><strong>TikTok</strong><a href="https://www.tiktok.com/@premium_barber_gh" target="_blank" rel="noopener">@premium_barber_gh</a></div>
+      </div>
+      <div>
+        <div class="contact-card" style="margin-bottom:15px">
+          <h3>Opening Hours</h3>
+          <div class="hours-row"><span>Monday</span><span>9:00 AM – 9:00 PM</span></div>
+          <div class="hours-row closed-day"><span>Tuesday</span><span>Closed</span></div>
+          <div class="hours-row"><span>Wednesday</span><span>9:00 AM – 9:00 PM</span></div>
+          <div class="hours-row"><span>Thursday</span><span>9:00 AM – 9:00 PM</span></div>
+          <div class="hours-row"><span>Friday</span><span>9:00 AM – 9:00 PM</span></div>
+          <div class="hours-row"><span>Saturday</span><span>9:00 AM – 9:00 PM</span></div>
+          <div class="hours-row"><span>Sunday</span><span>1:00 PM – 9:00 PM</span></div>
+        </div>
+        <div class="map-placeholder">
+          <div><h3>Visit Our Location</h3><p>P94H+68W, 100 Pinanko Road, Kumasi</p><a class="btn" href="https://www.google.com/maps/search/?api=1&query=P94H%2B68W+100+Pinanko+Road+Kumasi" target="_blank" rel="noopener">Open Google Maps ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><a href="#" class="logo">PREMIUM <span>BARBER</span><small>GH</small></a><p>Professional grooming services in Kumasi. Look sharp, feel great and experience quality service.</p></div>
+      <div><h4>Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#booking">Book Appointment</a></div></div>
+      <div><h4>Get In Touch</h4><div class="footer-links"><a href="tel:+233240211473">+233 24 021 1473</a><a href="https://wa.me/233554890113" target="_blank" rel="noopener">WhatsApp Orders</a><span>Kumasi - Ghana</span><a href="https://www.instagram.com/premium_barber_gh/" target="_blank" rel="noopener">Instagram</a></div></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="currentYear"></span> Premium Barber GH. All rights reserved.</span><span>Designed &amp; Developed by Hamza Solutions</span></div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   PREMIUM BARBER GH — DEMO BOOKING SYSTEM
+   Uses the same localStorage keys as the standalone admin.
+   Demo only: bookings do not sync between devices/browsers.
+========================================================= */
+
+const WHATSAPP_NUMBER = "233554890113";
+
+const STORAGE = {
+  bookings: "pbg_admin_bookings_v1",
+  calendar: "pbg_admin_calendar_v1",
+  settings: "pbg_admin_settings_v1",
+  business: "pbg_admin_business_v1"
+};
+
+const DEFAULT_HOURS = {
+  0: { open: true, start: "13:00", end: "21:00" },
+  1: { open: true, start: "09:00", end: "21:00" },
+  2: { open: false, start: "09:00", end: "21:00" },
+  3: { open: true, start: "09:00", end: "21:00" },
+  4: { open: true, start: "09:00", end: "21:00" },
+  5: { open: true, start: "09:00", end: "21:00" },
+  6: { open: true, start: "09:00", end: "21:00" }
+};
+
+const SLOT_INTERVAL_MINUTES = 60;
+const DAILY_CAPACITY = 10;
+
+const calendarGrid = document.getElementById("calendarGrid");
+const calendarMonth = document.getElementById("calendarMonth");
+const selectedDateLabel = document.getElementById("selectedDateLabel");
+const bookingDateInput = document.getElementById("bookingDate");
+const bookingTimeSelect = document.getElementById("bookingTime");
+const timeHelp = document.getElementById("timeHelp");
+const bookingForm = document.getElementById("bookingForm");
+const formMessage = document.getElementById("formMessage");
+
+let calendarCursor = new Date();
+calendarCursor.setDate(1);
+let selectedDateKey = "";
+
+function readStorage(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (error) {
+    console.warn("Could not read demo storage:", key, error);
+    return fallback;
+  }
+}
+
+function writeStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getBookings() {
+  const data = readStorage(STORAGE.bookings, []);
+  return Array.isArray(data) ? data : [];
+}
+
+function getCalendarOverrides() {
+  const data = readStorage(STORAGE.calendar, {});
+  return data && typeof data === "object" ? data : {};
+}
+
+function getHours() {
+  const saved = readStorage(STORAGE.settings, null);
+  if (!saved || typeof saved !== "object") return DEFAULT_HOURS;
+
+  const merged = { ...DEFAULT_HOURS };
+  for (let day = 0; day <= 6; day++) {
+    if (saved[day]) merged[day] = { ...DEFAULT_HOURS[day], ...saved[day] };
+  }
+  return merged;
+}
+
+function dateKey(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+function parseDateKey(key) {
+  const [year, month, day] = key.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function formatDate(date) {
+  return date.toLocaleDateString("en-GH", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+function getDaySchedule(date) {
+  const hours = getHours();
+  return hours[date.getDay()] || DEFAULT_HOURS[date.getDay()];
+}
+
+function isPastDate(date) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const check = new Date(date);
+  check.setHours(0, 0, 0, 0);
+  return check < today;
+}
+
+function getActiveBookingsForDate(key) {
+  return getBookings().filter(booking =>
+    booking.date === key &&
+    ["pending", "confirmed"].includes(String(booking.status || "pending").toLowerCase())
+  );
+}
+
+function getDateStatus(date) {
+  const key = dateKey(date);
+  const overrides = getCalendarOverrides();
+  const override = overrides[key];
+
+  if (isPastDate(date)) return "past";
+  if (override && ["closed", "full"].includes(override.status)) return override.status;
+
+  const schedule = getDaySchedule(date);
+  if (!schedule.open) return "closed";
+
+  const bookings = getActiveBookingsForDate(key);
+  if (bookings.length >= DAILY_CAPACITY) return "full";
+
+  if (override && override.status === "available") return "available";
+  return "available";
+}
+
+function renderCalendar() {
+  const year = calendarCursor.getFullYear();
+  const month = calendarCursor.getMonth();
+
+  calendarMonth.textContent = calendarCursor.toLocaleDateString("en", {
+    month: "long",
+    year: "numeric"
+  });
+
+  calendarGrid.innerHTML = "";
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  for (let i = 0; i < firstDay; i++) {
+    const blank = document.createElement("div");
+    calendarGrid.appendChild(blank);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    const key = dateKey(date);
+    const status = getDateStatus(date);
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = `calendar-day ${status}`;
+    button.textContent = day;
+    button.setAttribute("aria-label", `${formatDate(date)} - ${status}`);
+
+    if (key === selectedDateKey) button.classList.add("selected");
+
+    if (status !== "available") {
+      button.disabled = true;
+    } else {
+      button.addEventListener("click", () => selectDate(key));
+    }
+
+    calendarGrid.appendChild(button);
+  }
+}
+
+function selectDate(key) {
+  selectedDateKey = key;
+  const date = parseDateKey(key);
+
+  bookingDateInput.value = key;
+  selectedDateLabel.textContent = `Selected date: ${formatDate(date)}`;
+
+  renderCalendar();
+  renderTimeSlots();
+}
+
+function formatTime(time) {
+  const [hour, minute] = time.split(":").map(Number);
+  const date = new Date();
+  date.setHours(hour, minute, 0, 0);
+  return date.toLocaleTimeString("en-GH", {
+    hour: "numeric",
+    minute: "2-digit"
+  });
+}
+
+function generateTimeSlots(date) {
+  const schedule = getDaySchedule(date);
+  if (!schedule.open) return [];
+
+  const [startHour, startMinute] = schedule.start.split(":").map(Number);
+  const [endHour, endMinute] = schedule.end.split(":").map(Number);
+
+  const start = startHour * 60 + startMinute;
+  const end = endHour * 60 + endMinute;
+  const slots = [];
+
+  for (let minutes = start; minutes + SLOT_INTERVAL_MINUTES <= end; minutes += SLOT_INTERVAL_MINUTES) {
+    const hour = Math.floor(minutes / 60);
+    const minute = minutes % 60;
+    slots.push(`${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`);
+  }
+  return slots;
+}
+
+function renderTimeSlots() {
+  bookingTimeSelect.innerHTML = '<option value="">Choose a time</option>';
+  bookingTimeSelect.disabled = true;
+
+  if (!selectedDateKey) {
+    timeHelp.textContent = "Choose an available date on the calendar.";
+    return;
+  }
+
+  const date = parseDateKey(selectedDateKey);
+  const slots = generateTimeSlots(date);
+  const bookings = getActiveBookingsForDate(selectedDateKey);
+  const overrides = getCalendarOverrides();
+  const override = overrides[selectedDateKey];
+
+  if (!slots.length || (override && override.status !== "available" && override.status !== undefined)) {
+    timeHelp.textContent = "This date is not available for booking.";
+    return;
+  }
+
+  const bookedTimes = new Set(bookings.map(booking => booking.time));
+  let availableCount = 0;
+
+  slots.forEach(time => {
+    if (bookedTimes.has(time)) return;
+
+    const option = document.createElement("option");
+    option.value = time;
+    option.textContent = formatTime(time);
+    bookingTimeSelect.appendChild(option);
+    availableCount++;
+  });
+
+  if (availableCount === 0) {
+    bookingTimeSelect.innerHTML = '<option value="">No times available</option>';
+    timeHelp.textContent = "All appointment times for this date have been taken.";
+    return;
+  }
+
+  bookingTimeSelect.disabled = false;
+  timeHelp.textContent = `${availableCount} appointment time(s) available.`;
+}
+
+document.getElementById("prevMonth").addEventListener("click", () => {
+  calendarCursor.setMonth(calendarCursor.getMonth() - 1);
+  renderCalendar();
+});
+
+document.getElementById("nextMonth").addEventListener("click", () => {
+  calendarCursor.setMonth(calendarCursor.getMonth() + 1);
+  renderCalendar();
+});
+
+document.querySelectorAll("[data-service]").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("serviceSelect").value = link.dataset.service;
+  });
+});
+
+function showFormMessage(message, type) {
+  formMessage.textContent = message;
+  formMessage.className = `form-message ${type}`;
+}
+
+function createBookingId() {
+  if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  return `pbg_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+}
+
+function validateBooking(data) {
+  if (!data.name || !data.phone || !data.service || !data.date || !data.time) {
+    return "Please complete all required fields.";
+  }
+
+  const date = parseDateKey(data.date);
+  if (isPastDate(date)) return "Please select a future date.";
+
+  if (getDateStatus(date) !== "available") {
+    return "Sorry, this date is no longer available. Please choose another date.";
+  }
+
+  const schedule = getDaySchedule(date);
+  if (!schedule.open) return "The shop is closed on this date.";
+
+  const allowedTimes = generateTimeSlots(date);
+  if (!allowedTimes.includes(data.time)) return "Please select a valid appointment time.";
+
+  const existing = getActiveBookingsForDate(data.date);
+  if (existing.some(item => item.time === data.time)) {
+    return "That time has just been booked. Please choose another time.";
+  }
+
+  if (existing.length >= DAILY_CAPACITY) {
+    return "This date is now fully booked. Please choose another date.";
+  }
+
+  return "";
+}
+
+bookingForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const submitButton = document.getElementById("bookingSubmit");
+  const data = {
+    name: document.getElementById("customerName").value.trim(),
+    phone: document.getElementById("customerPhone").value.trim(),
+    service: document.getElementById("serviceSelect").value,
+    date: bookingDateInput.value,
+    time: bookingTimeSelect.value,
+    note: document.getElementById("bookingNote").value.trim()
+  };
+
+  const error = validateBooking(data);
+  if (error) {
+    showFormMessage(error, "error");
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Saving Request...";
+
+  try {
+    const bookings = getBookings();
+
+    const booking = {
+      id: createBookingId(),
+      name: data.name,
+      phone: data.phone,
+      service: data.service,
+      date: data.date,
+      time: data.time,
+      status: "pending",
+      note: data.note,
+      createdAt: new Date().toISOString(),
+      source: "website",
+      whatsappStatus: "not_verified"
+    };
+
+    bookings.push(booking);
+    writeStorage(STORAGE.bookings, bookings);
+
+    const readableDate = formatDate(parseDateKey(data.date));
+    const readableTime = formatTime(data.time);
+
+    const message = [
+      "Hello Premium Barber GH, I have submitted an appointment request.",
+      "",
+      `Name: ${data.name}`,
+      `Phone: ${data.phone}`,
+      `Service: ${data.service}`,
+      `Date: ${readableDate}`,
+      `Time: ${readableTime}`,
+      `Note: ${data.note || "None"}`,
+      "",
+      "Please confirm my appointment. Thank you."
+    ].join("\n");
+
+    showFormMessage(
+      "Your request has been recorded in this demo. WhatsApp will open so you can contact the barber. Your appointment is pending confirmation.",
+      "success"
+    );
+
+    renderCalendar();
+    renderTimeSlots();
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+    bookingForm.reset();
+    selectedDateKey = "";
+    bookingDateInput.value = "";
+    bookingTimeSelect.innerHTML = '<option value="">Select date first</option>';
+    bookingTimeSelect.disabled = true;
+    selectedDateLabel.textContent = "Select an available date to continue.";
+    timeHelp.textContent = "Choose an available date on the calendar.";
+    renderCalendar();
+
+  } catch (error) {
+    console.error("Booking could not be saved:", error);
+    showFormMessage("We could not save your request in this browser. Please try again.", "error");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Send Appointment Request ↗";
+  }
+});
+
+/* Mobile navigation */
+document.getElementById("menuToggle").addEventListener("click", () => {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+
+document.querySelectorAll("#navLinks a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+/* Keep the homepage calendar refreshed when the admin changes data
+   in another tab of the same browser. */
+window.addEventListener("storage", event => {
+  if (!event.key || Object.values(STORAGE).includes(event.key)) {
+    renderCalendar();
+    if (selectedDateKey) renderTimeSlots();
+  }
+});
+
+/* Initial setup */
+document.getElementById("currentYear").textContent = new Date().getFullYear();
+renderCalendar();
+
+/* Set the minimum date to today. */
+bookingDateInput.min = dateKey(new Date());
+</script>
+</body>
+</html>

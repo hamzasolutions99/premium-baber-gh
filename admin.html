@@ -1,0 +1,1197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Barber GH | Admin Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#111214;--panel:#1a1c20;--panel2:#22252a;
+  --red:#e32636;--red-soft:rgba(227,38,54,.13);
+  --green:#20a66a;--green-soft:rgba(32,166,106,.13);
+  --ash:#777d86;--ash-soft:rgba(119,125,134,.16);
+  --white:#fff;--muted:#9a9da5;--line:rgba(255,255,255,.09);
+  --cream:#f5f4f1;--text:#24262a;--shadow:0 15px 45px rgba(0,0,0,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.admin-layout{min-height:100vh;display:flex}
+.sidebar{
+  width:255px;background:var(--black);color:white;padding:27px 18px;
+  display:flex;flex-direction:column;flex-shrink:0;position:fixed;
+  inset:0 auto 0 0;z-index:20;transition:.25s;
+}
+.brand{display:flex;align-items:center;gap:12px;padding:0 10px 30px;border-bottom:1px solid var(--line)}
+.brand-mark{
+  width:43px;height:43px;background:var(--red);display:grid;place-items:center;
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:25px;border-radius:9px
+}
+.brand-name{font-family:'Barlow Condensed',sans-serif;font-size:23px;font-weight:800;line-height:1;text-transform:uppercase}
+.brand-name span{display:block;color:var(--red);font-size:12px;letter-spacing:2px;margin-top:4px}
+.sidebar-label{color:#777b84;font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;padding:26px 12px 11px}
+.nav-menu{display:grid;gap:6px}
+.nav-link{
+  border:0;background:transparent;color:#a9abb1;display:flex;align-items:center;gap:13px;
+  padding:13px 14px;border-radius:9px;font-size:13px;font-weight:700;text-align:left;
+  transition:.2s;width:100%
+}
+.nav-link:hover,.nav-link.active{background:var(--panel2);color:white}
+.nav-link.active{border-left:3px solid var(--red)}
+.nav-icon{width:19px;text-align:center;font-size:17px}
+.sidebar-bottom{margin-top:auto}
+.sidebar-business{padding:15px;background:var(--panel);border:1px solid var(--line);border-radius:11px}
+.online-dot{width:8px;height:8px;background:var(--green);display:inline-block;border-radius:50%;margin-right:7px}
+.sidebar-business p{font-size:11px;color:#aaa;margin-top:8px;line-height:1.6}
+.main{margin-left:255px;width:calc(100% - 255px);min-width:0}
+.topbar{
+  height:76px;background:white;border-bottom:1px solid #e9e8e5;
+  display:flex;align-items:center;justify-content:space-between;padding:0 35px;
+  position:sticky;top:0;z-index:10
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.page-heading{font-family:'Barlow Condensed',sans-serif;font-size:25px;text-transform:uppercase;font-weight:800}
+.topbar-sub{font-size:11px;color:#92949a;margin-top:2px}
+.admin-profile{display:flex;align-items:center;gap:11px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--black);color:white;display:grid;place-items:center;font-weight:800;font-size:13px}
+.profile-text strong{display:block;font-size:12px}
+.profile-text span{font-size:10px;color:#92949a}
+.mobile-menu{display:none;border:0;background:transparent;font-size:23px}
+.content{padding:30px 35px 55px;max-width:1500px;margin:auto}
+.section{display:none}.section.active{display:block}
+.section-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:23px}
+.section-intro h2{font-family:'Barlow Condensed',sans-serif;font-size:32px;text-transform:uppercase;font-weight:800}
+.section-intro p{font-size:12px;color:#85878e;margin-top:5px}
+.date-today{font-size:11px;color:#85878e;font-weight:700}
+.btn{
+  border:0;border-radius:7px;padding:11px 16px;font-size:11px;font-weight:800;
+  transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:7px
+}
+.btn-red{background:var(--red);color:white}.btn-red:hover{background:#c91d2c}
+.btn-dark{background:var(--black);color:white}
+.btn-light{background:#f0efed;color:#444}
+.btn-outline{background:transparent;border:1px solid #deddd9;color:#333}
+.btn-danger{background:#fff0f1;color:#c82030}
+.btn-green{background:var(--green-soft);color:#168354}
+.btn-small{padding:8px 11px;font-size:10px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:24px}
+.stat-card{background:white;border:1px solid #eeece8;padding:20px;border-radius:11px;box-shadow:0 5px 18px rgba(0,0,0,.025)}
+.stat-top{display:flex;justify-content:space-between;align-items:center}
+.stat-label{font-size:11px;color:#85878e;font-weight:700}
+.stat-icon{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;font-size:16px}
+.stat-value{font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:800;margin-top:11px}
+.stat-note{font-size:10px;color:#92949a;margin-top:3px}
+.icon-red{background:var(--red-soft);color:var(--red)}
+.icon-green{background:var(--green-soft);color:var(--green)}
+.icon-ash{background:var(--ash-soft);color:var(--ash)}
+.icon-dark{background:#eeeeec;color:#333}
+.panel{background:white;border:1px solid #eeece8;border-radius:11px;overflow:hidden;box-shadow:0 5px 18px rgba(0,0,0,.025)}
+.panel-header{padding:19px 21px;border-bottom:1px solid #eeece8;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.panel-title{font-size:13px;font-weight:800}
+.panel-subtitle{font-size:10px;color:#92949a;margin-top:4px}
+.panel-body{padding:20px}
+.dashboard-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+.mini-booking{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #f0efed}
+.mini-booking:last-child{border:0}
+.mini-booking strong{font-size:12px;display:block}
+.mini-booking span{font-size:10px;color:#92949a;display:block;margin-top:4px}
+.empty-state{text-align:center;padding:35px 15px;color:#92949a;font-size:12px}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border-radius:30px;font-size:9px;font-weight:800;white-space:nowrap}
+.status-confirmed{background:var(--green-soft);color:#168354}
+.status-pending{background:#fff4dd;color:#9b6b13}
+.status-cancelled{background:var(--ash-soft);color:#777d86}
+.status-available{background:var(--green-soft);color:#168354}
+.status-full{background:var(--red-soft);color:var(--red)}
+.status-closed{background:var(--ash-soft);color:#777d86}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);gap:18px}
+.calendar-panel{padding:20px}
+.calendar-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:19px}
+.month-title{font-family:'Barlow Condensed',sans-serif;font-size:25px;font-weight:800;text-transform:uppercase}
+.month-arrows{display:flex;gap:7px}
+.arrow-btn{width:34px;height:34px;border:1px solid #e7e6e2;background:white;border-radius:7px;font-size:16px}
+.weekdays,.calendar-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+.weekdays div{text-align:center;color:#999ba1;font-size:9px;font-weight:800;padding:8px 0;text-transform:uppercase}
+.day{
+  min-height:75px;border:1px solid #eeece8;background:#fff;border-radius:8px;
+  padding:8px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;
+  transition:.15s;position:relative
+}
+.day:hover{border-color:#aaa;transform:translateY(-1px)}
+.day-number{font-size:12px;font-weight:800}
+.day-dot{width:7px;height:7px;border-radius:50%;margin-top:3px}
+.day small{font-size:8px;font-weight:800}
+.day.available{background:#effaf4;border-color:#c5ead5;color:#168354}
+.day.available .day-dot{background:var(--green)}
+.day.full{background:#fff0f1;border-color:#f5c5ca;color:#d52333}
+.day.full .day-dot{background:var(--red)}
+.day.closed{background:#f0f0ef;border-color:#e1e1df;color:#858990}
+.day.closed .day-dot{background:#969ba2}
+.day.today{outline:2px solid var(--black);outline-offset:1px}
+.day.selected{box-shadow:0 0 0 2px var(--red);border-color:var(--red)}
+.day.other-month{opacity:.3}.day.past{opacity:.45}
+.calendar-legend{display:flex;flex-wrap:wrap;gap:15px;border-top:1px solid #eeece8;padding-top:17px;margin-top:17px}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:10px;color:#777}
+.legend-dot{width:9px;height:9px;border-radius:50%}
+.legend-green{background:var(--green)}.legend-red{background:var(--red)}.legend-ash{background:#969ba2}
+.day-editor{padding:20px}
+.day-editor h3{font-family:'Barlow Condensed',sans-serif;font-size:23px;text-transform:uppercase}
+.day-editor>p{font-size:11px;color:#92949a;margin:5px 0 18px}
+.selected-date-box{padding:13px;background:#f6f5f2;border-radius:8px;font-size:12px;font-weight:800;margin-bottom:17px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:10px;font-weight:800;margin-bottom:7px;color:#55585e}
+.field input,.field select,.field textarea{
+  width:100%;border:1px solid #e2e1dd;background:white;border-radius:7px;
+  padding:11px 12px;font-size:11px;outline:none;color:#292b30
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red)}
+.field textarea{resize:vertical;min-height:75px}
+.status-options{display:grid;gap:8px}
+.status-option{display:flex;align-items:center;gap:10px;border:1px solid #e8e7e3;padding:11px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer}
+.status-option input{accent-color:var(--red)}
+.status-option.available-choice{color:#168354}
+.status-option.full-choice{color:var(--red)}
+.status-option.closed-choice{color:#777d86}
+.editor-actions{display:grid;gap:8px;margin-top:18px}
+.editor-actions .btn{width:100%}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:700px}
+th{text-align:left;padding:13px 16px;background:#faf9f7;color:#92949a;font-size:9px;text-transform:uppercase;letter-spacing:.7px;font-weight:800}
+td{padding:14px 16px;border-top:1px solid #f0efed;font-size:11px}
+td strong{font-size:11px}
+.table-muted{color:#92949a;font-size:10px;margin-top:4px}
+.table-actions{display:flex;gap:6px;flex-wrap:wrap}
+.filter-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.filter-row input,.filter-row select{border:1px solid #e6e5e1;background:white;border-radius:7px;padding:10px 12px;font-size:10px}
+.filter-row input{min-width:190px}
+.table-empty{text-align:center;padding:35px;color:#92949a;font-size:12px}
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.settings-card{padding:22px}
+.settings-card h3{font-family:'Barlow Condensed',sans-serif;font-size:23px;text-transform:uppercase;margin-bottom:5px}
+.settings-card>p{font-size:10px;color:#92949a;margin-bottom:20px}
+.hours-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #f0efed}
+.hours-row:last-child{border:0}
+.hours-row strong{font-size:11px}
+.hours-row input{width:100%;min-width:0;border:1px solid #e5e4e0;border-radius:6px;padding:8px;font-size:10px}
+.hours-row .day-toggle{display:flex;align-items:center;gap:6px;font-size:10px}
+.day-toggle input{width:auto;accent-color:var(--red)}
+.settings-note{background:#fff7e9;border:1px solid #f1dfbd;color:#88601d;padding:12px;border-radius:8px;font-size:10px;line-height:1.6;margin-top:15px}
+.danger-zone{border:1px solid #f2c8cc}.danger-zone h3{color:var(--red)}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}
+.modal-backdrop.show{display:flex}
+.modal{background:white;border-radius:13px;width:min(100%,480px);max-height:90vh;overflow:auto;box-shadow:var(--shadow)}
+.modal-header{padding:19px 21px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.modal-header h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;text-transform:uppercase}
+.close-modal{border:0;background:#f1f0ed;width:30px;height:30px;border-radius:50%;font-size:18px}
+.modal-body{padding:21px}
+.modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.toast{position:fixed;right:22px;bottom:22px;z-index:200;background:var(--black);color:white;padding:13px 18px;border-radius:8px;font-size:11px;font-weight:700;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translateY(0)}
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:15}
+@media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,1fr)}.dashboard-grid{grid-template-columns:1fr}.calendar-layout{grid-template-columns:1fr}}
+@media(max-width:760px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .mobile-overlay.show{display:block}
+  .main{margin-left:0;width:100%}
+  .topbar{height:67px;padding:0 17px}
+  .mobile-menu{display:block}
+  .content{padding:23px 15px 40px}
+  .topbar-sub{display:none}.profile-text{display:none}
+  .section-intro{align-items:flex-start;flex-direction:column}
+  .stats-grid{gap:10px}.stat-card{padding:15px}.stat-value{font-size:29px}
+  .calendar-panel{padding:12px}
+  .weekdays,.calendar-days{gap:4px}
+  .day{min-height:59px;padding:6px 2px}
+  .day small{font-size:7px}
+  .calendar-legend{gap:10px}
+  .settings-grid{grid-template-columns:1fr}
+  .hours-row{grid-template-columns:.8fr 1fr 1fr}
+  .panel-header{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:390px){.stats-grid{grid-template-columns:1fr 1fr}.day{min-height:52px}.day-number{font-size:10px}.day small{font-size:6px}}
+</style>
+</head>
+
+<body>
+<div class="admin-layout">
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div class="brand-name">Premium Barber<span>GH ADMIN</span></div>
+    </div>
+
+    <div class="sidebar-label">Workspace</div>
+    <nav class="nav-menu">
+      <button class="nav-link active" data-section="dashboard"><span class="nav-icon">▦</span> Dashboard</button>
+      <button class="nav-link" data-section="calendar"><span class="nav-icon">▣</span> Booking Calendar</button>
+      <button class="nav-link" data-section="bookings"><span class="nav-icon">☷</span> Manage Bookings</button>
+      <button class="nav-link" data-section="settings"><span class="nav-icon">⚙</span> Business Settings</button>
+    </nav>
+
+    <div class="sidebar-label">Business</div>
+    <nav class="nav-menu">
+      <button class="nav-link" data-external="https://www.instagram.com/premium_barber_gh/"><span class="nav-icon">◎</span> Instagram</button>
+      <button class="nav-link" data-external="https://www.tiktok.com/@premium_barber_gh"><span class="nav-icon">♪</span> TikTok</button>
+      <button class="nav-link" data-external="https://wa.me/233554890113"><span class="nav-icon">◉</span> WhatsApp</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-business">
+        <div style="font-size:11px;font-weight:800"><span class="online-dot"></span>Demo dashboard</div>
+        <p>Premium Barber GH<br>Kumasi, Ghana</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div>
+          <div class="page-heading" id="topbarTitle">Dashboard</div>
+          <div class="topbar-sub">Premium Barber GH · Admin workspace</div>
+        </div>
+      </div>
+      <div class="admin-profile">
+        <div class="avatar">PB</div>
+        <div class="profile-text"><strong>Barber Admin</strong><span>Demo Administrator</span></div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="section active" id="dashboard">
+        <div class="section-intro">
+          <div><h2>Business Overview</h2><p>Keep track of appointments and your booking availability.</p></div>
+          <div class="date-today" id="todayLabel"></div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-top"><span class="stat-label">Total Bookings</span><span class="stat-icon icon-dark">▤</span></div><div class="stat-value" id="totalBookings">0</div><div class="stat-note">All recorded appointments</div></div>
+          <div class="stat-card"><div class="stat-top"><span class="stat-label">Confirmed</span><span class="stat-icon icon-green">✓</span></div><div class="stat-value" id="confirmedBookings">0</div><div class="stat-note">Appointments confirmed</div></div>
+          <div class="stat-card"><div class="stat-top"><span class="stat-label">Fully Booked Days</span><span class="stat-icon icon-red">●</span></div><div class="stat-value" id="fullDays">0</div><div class="stat-note">Dates marked as full</div></div>
+          <div class="stat-card"><div class="stat-top"><span class="stat-label">Available Days</span><span class="stat-icon icon-green">✓</span></div><div class="stat-value" id="availableDays">0</div><div class="stat-note">Available dates in next 30 days</div></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div><div class="panel-title">Recent Bookings</div><div class="panel-subtitle">Your latest recorded appointments</div></div>
+              <button class="btn btn-light btn-small" data-goto="bookings">View All →</button>
+            </div>
+            <div class="panel-body" id="recentBookings"><div class="empty-state">No bookings have been added yet.</div></div>
+          </div>
+          <div class="panel">
+            <div class="panel-header"><div><div class="panel-title">Quick Actions</div><div class="panel-subtitle">Manage your appointment schedule</div></div></div>
+            <div class="panel-body" style="display:grid;gap:10px">
+              <button class="btn btn-red" id="quickAdd">＋ Add New Booking</button>
+              <button class="btn btn-dark" data-goto="calendar">▣ Manage Calendar</button>
+              <button class="btn btn-light" data-goto="settings">⚙ Edit Opening Hours</button>
+              <div class="settings-note">Remember to mark a date as fully booked when you can no longer accept appointments for that day.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="calendar">
+        <div class="section-intro">
+          <div><h2>Booking Calendar</h2><p>Choose a date to manage whether customers can book an appointment.</p></div>
+          <button class="btn btn-red" id="calendarAdd">＋ Add Booking</button>
+        </div>
+
+        <div class="calendar-layout">
+          <div class="panel">
+            <div class="calendar-panel">
+              <div class="calendar-controls">
+                <button class="arrow-btn" id="previousMonth">‹</button>
+                <div class="month-title" id="monthTitle"></div>
+                <button class="arrow-btn" id="nextMonth">›</button>
+              </div>
+              <div class="weekdays"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
+              <div class="calendar-days" id="calendarDays"></div>
+              <div class="calendar-legend">
+                <div class="legend-item"><span class="legend-dot legend-green"></span> Available</div>
+                <div class="legend-item"><span class="legend-dot legend-red"></span> Fully Booked</div>
+                <div class="legend-item"><span class="legend-dot legend-ash"></span> Closed / Unavailable</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="day-editor">
+              <h3>Manage Date</h3>
+              <p>Select a date on the calendar to update its booking status.</p>
+              <div class="selected-date-box" id="selectedDateLabel">Select a date from the calendar</div>
+              <div class="field">
+                <label>BOOKING STATUS</label>
+                <div class="status-options">
+                  <label class="status-option available-choice"><input type="radio" name="dayStatus" value="available"><span>● Available</span></label>
+                  <label class="status-option full-choice"><input type="radio" name="dayStatus" value="full"><span>● Fully Booked</span></label>
+                  <label class="status-option closed-choice"><input type="radio" name="dayStatus" value="closed"><span>● Closed / Unavailable</span></label>
+                </div>
+              </div>
+              <div class="field"><label>NOTE (OPTIONAL)</label><textarea id="dayNote" placeholder="Example: Private appointment, holiday, fully booked..."></textarea></div>
+              <div class="editor-actions">
+                <button class="btn btn-red" id="saveDayStatus">Save Date Status</button>
+                <button class="btn btn-light" id="resetDayStatus">Reset to Default</button>
+              </div>
+              <p style="font-size:9px;color:#999;margin-top:14px;line-height:1.6">Dates not manually changed follow your normal business opening days. Tuesdays are closed by default.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="bookings">
+        <div class="section-intro">
+          <div><h2>Manage Bookings</h2><p>Add appointments and update their booking status.</p></div>
+          <button class="btn btn-red" id="bookingAdd">＋ Add New Booking</button>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div><div class="panel-title">Appointment Records</div><div class="panel-subtitle">Appointments saved in this browser</div></div>
+            <div class="filter-row">
+              <input type="search" id="bookingSearch" placeholder="Search customer...">
+              <select id="bookingFilter">
+                <option value="all">All statuses</option><option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option><option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Customer</th><th>Service</th><th>Date</th><th>Time</th><th>Phone</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="bookingsTable"></tbody>
+            </table>
+            <div class="table-empty" id="bookingEmpty">No bookings found.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="settings">
+        <div class="section-intro">
+          <div><h2>Business Settings</h2><p>Manage the days and hours customers can request appointments.</p></div>
+          <button class="btn btn-red" id="saveSettingsButton">Save Settings</button>
+        </div>
+        <div class="settings-grid">
+          <div class="panel settings-card">
+            <h3>Opening Hours</h3><p>Set the days your barber shop accepts appointments.</p>
+            <div id="hoursEditor"></div>
+            <div class="settings-note">Tuesday is closed by default. Sunday opening time is 1:00 PM. Update these settings if the business schedule changes.</div>
+          </div>
+          <div class="panel settings-card">
+            <h3>Business Information</h3><p>Contact information displayed in this admin workspace.</p>
+            <div class="field"><label>BUSINESS NAME</label><input id="businessName"></div>
+            <div class="field"><label>PHONE NUMBER</label><input id="businessPhone"></div>
+            <div class="field"><label>LOCATION</label><input id="businessLocation"></div>
+            <div class="field"><label>INSTAGRAM</label><input id="businessInstagram"></div>
+            <button class="btn btn-dark" id="saveBusinessInfo">Save Business Information</button>
+          </div>
+          <div class="panel settings-card danger-zone">
+            <h3>Data Management</h3><p>Manage the information saved by this browser.</p>
+            <div class="settings-note">This standalone demo stores information in this browser only. Clearing browser data may erase these records. Export backups regularly.</div>
+            <button class="btn btn-danger" style="margin-top:16px" id="exportButton">↓ Export Admin Data</button>
+            <button class="btn btn-outline" style="margin-top:9px" id="importButton">↑ Import Admin Data</button>
+            <input type="file" id="importFile" accept=".json,application/json" hidden>
+            <button class="btn btn-outline" style="margin-top:9px" id="clearDemoButton">Clear All Demo Data</button>
+          </div>
+          <div class="panel settings-card">
+            <h3>About This Dashboard</h3><p>Standalone administration workspace.</p>
+            <div style="font-size:11px;line-height:1.9;color:#777">
+              <strong style="color:#222">Premium Barber GH</strong><br>
+              Booking calendar and appointment manager.<br><br>
+              <strong style="color:#222">Storage:</strong> Browser localStorage<br>
+              <strong style="color:#222">Backend:</strong> Not connected<br>
+              <strong style="color:#222">Demo capacity:</strong> 8 active bookings per day<br>
+              <strong style="color:#222">WhatsApp:</strong> 055 489 0113
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="bookingModal">
+  <div class="modal">
+    <div class="modal-header"><h3>Add Appointment</h3><button class="close-modal" id="closeModal">×</button></div>
+    <div class="modal-body">
+      <form id="bookingForm">
+        <div class="field"><label>CUSTOMER NAME *</label><input id="customerName" required maxlength="100" placeholder="Enter customer name"></div>
+        <div class="field"><label>PHONE NUMBER *</label><input id="customerPhone" required maxlength="30" placeholder="024 000 0000"></div>
+        <div class="field">
+          <label>SERVICE *</label>
+          <select id="customerService" required>
+            <option value="">Select a service</option>
+            <option>Buzz Cut</option><option>Curly Hair</option><option>Hair Shape-Up</option>
+            <option>Head Shave</option><option>Regular Shave</option><option>Straight Razor Shave</option>
+            <option>Hair Colouring</option><option>Permanent Hair Dye</option><option>Ladies Permed Cut</option>
+          </select>
+        </div>
+        <div class="field"><label>APPOINTMENT DATE *</label><input type="date" id="customerDate" required></div>
+        <div class="field"><label>APPOINTMENT TIME *</label><select id="customerTime" required><option value="">Choose a date first</option></select></div>
+        <div class="field"><label>BOOKING STATUS</label><select id="customerStatus"><option value="pending">Pending</option><option value="confirmed">Confirmed</option></select></div>
+        <div class="field"><label>ADDITIONAL NOTE</label><textarea id="customerNote" maxlength="500" placeholder="Optional appointment notes"></textarea></div>
+        <div class="modal-footer"><button type="button" class="btn btn-light" id="cancelModal">Cancel</button><button type="submit" class="btn btn-red">Save Appointment</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =========================================================
+   PREMIUM BARBER GH — STANDALONE DEMO ADMIN
+   No Firebase, backend, or online database.
+   Shared browser storage keys for the public booking page:
+   pbg_admin_bookings_v1
+   pbg_admin_calendar_v1
+   pbg_admin_settings_v1
+   pbg_admin_business_v1
+========================================================= */
+
+"use strict";
+
+const STORAGE = {
+  bookings:"pbg_admin_bookings_v1",
+  calendar:"pbg_admin_calendar_v1",
+  settings:"pbg_admin_settings_v1",
+  business:"pbg_admin_business_v1"
+};
+
+const CAPACITY_PER_DAY = 8;
+const weekdayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const defaultSettings = {
+  0:{open:true,start:"13:00",end:"21:00"},
+  1:{open:true,start:"09:00",end:"21:00"},
+  2:{open:false,start:"",end:""},
+  3:{open:true,start:"09:00",end:"21:00"},
+  4:{open:true,start:"09:00",end:"21:00"},
+  5:{open:true,start:"09:00",end:"21:00"},
+  6:{open:true,start:"09:00",end:"21:00"}
+};
+
+const defaultBusiness = {
+  name:"Premium Barber GH",
+  phone:"024 021 1473",
+  location:"P94H+68W, 100 Pinanko Rd, Kumasi",
+  instagram:"@premium_barber_gh"
+};
+
+function clone(value){return JSON.parse(JSON.stringify(value));}
+
+function readStorage(key,fallback){
+  try{
+    const raw=localStorage.getItem(key);
+    return raw===null?clone(fallback):JSON.parse(raw);
+  }catch(error){
+    console.warn("Could not read demo storage:",key,error);
+    return clone(fallback);
+  }
+}
+
+let bookings = normalizeBookings(readStorage(STORAGE.bookings,[]));
+let calendarOverrides = normalizeCalendar(readStorage(STORAGE.calendar,{}));
+let settings = normalizeSettings(readStorage(STORAGE.settings,defaultSettings));
+let businessInfo = normalizeBusiness(readStorage(STORAGE.business,defaultBusiness));
+
+let currentMonth = new Date();
+currentMonth.setDate(1);
+let selectedDate = dateKey(new Date());
+
+function normalizeBookings(value){
+  if(!Array.isArray(value))return [];
+  return value.filter(b=>b&&typeof b==="object").map(b=>({
+    id:String(b.id||makeId()),
+    name:String(b.name??b.customerName??""),
+    phone:String(b.phone??b.customerPhone??""),
+    service:String(b.service??""),
+    date:String(b.date??b.dateKey??""),
+    time:String(b.time??""),
+    status:["pending","confirmed","cancelled"].includes(b.status)?b.status:"pending",
+    note:String(b.note??""),
+    source:String(b.source??"website"),
+    createdAt:String(b.createdAt??new Date().toISOString())
+  })).filter(b=>/^\d{4}-\d{2}-\d{2}$/.test(b.date));
+}
+
+function normalizeCalendar(value){
+  if(!value||typeof value!=="object"||Array.isArray(value))return {};
+  const result={};
+  Object.entries(value).forEach(([key,item])=>{
+    if(/^\d{4}-\d{2}-\d{2}$/.test(key)&&item&&["available","full","closed"].includes(item.status)){
+      result[key]={status:item.status,note:String(item.note||"")};
+    }
+  });
+  return result;
+}
+
+function normalizeSettings(value){
+  const result={};
+  for(let i=0;i<7;i++){
+    const item=value?.[i]||defaultSettings[i];
+    result[i]={
+      open:Boolean(item.open),
+      start:item.open&&typeof item.start==="string"?item.start:"",
+      end:item.open&&typeof item.end==="string"?item.end:""
+    };
+  }
+  return result;
+}
+
+function normalizeBusiness(value){
+  return {
+    name:String(value?.name??defaultBusiness.name),
+    phone:String(value?.phone??defaultBusiness.phone),
+    location:String(value?.location??defaultBusiness.location),
+    instagram:String(value?.instagram??defaultBusiness.instagram)
+  };
+}
+
+function makeId(){
+  return "pbg_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,9);
+}
+
+function saveStorage(){
+  try{
+    localStorage.setItem(STORAGE.bookings,JSON.stringify(bookings));
+    localStorage.setItem(STORAGE.calendar,JSON.stringify(calendarOverrides));
+    localStorage.setItem(STORAGE.settings,JSON.stringify(settings));
+    localStorage.setItem(STORAGE.business,JSON.stringify(businessInfo));
+    return true;
+  }catch(error){
+    console.error(error);
+    showToast("Could not save. Browser storage may be full.");
+    return false;
+  }
+}
+
+function dateKey(date){
+  const y=date.getFullYear();
+  const m=String(date.getMonth()+1).padStart(2,"0");
+  const d=String(date.getDate()).padStart(2,"0");
+  return `${y}-${m}-${d}`;
+}
+
+function parseDate(key){
+  const [y,m,d]=key.split("-").map(Number);
+  return new Date(y,m-1,d);
+}
+
+function formatDate(key,options={weekday:"short",day:"numeric",month:"short",year:"numeric"}){
+  return parseDate(key).toLocaleDateString("en-GB",options);
+}
+
+function todayKey(){return dateKey(new Date());}
+function activeBookingsForDate(key){
+  return bookings.filter(b=>b.date===key&&b.status!=="cancelled");
+}
+function getDefaultStatus(key){
+  const day=parseDate(key).getDay();
+  return settings[day]?.open?"available":"closed";
+}
+function getDayStatus(key){
+  const override=calendarOverrides[key];
+  if(override?.status==="closed"||override?.status==="full")return override.status;
+  if(activeBookingsForDate(key).length>=CAPACITY_PER_DAY)return "full";
+  if(override?.status==="available")return "available";
+  return getDefaultStatus(key);
+}
+function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer=setTimeout(()=>toast.classList.remove("show"),2600);
+}
+function escapeHTML(value){
+  return String(value??"").replace(/[&<>"']/g,char=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[char]));
+}
+function statusBadge(status){
+  const labels={pending:"Pending",confirmed:"Confirmed",cancelled:"Cancelled"};
+  return `<span class="status-pill status-${status}">${labels[status]||"Unknown"}</span>`;
+}
+function refreshAll(){
+  renderDashboard();
+  renderCalendar();
+  renderBookings();
+}
+
+/* NAVIGATION */
+const titles={dashboard:"Dashboard",calendar:"Booking Calendar",bookings:"Manage Bookings",settings:"Business Settings"};
+
+function showSection(name){
+  if(!titles[name])return;
+  document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===name));
+  document.querySelectorAll(".nav-link[data-section]").forEach(b=>b.classList.toggle("active",b.dataset.section===name));
+  document.getElementById("topbarTitle").textContent=titles[name];
+  closeSidebar();
+  if(name==="dashboard")renderDashboard();
+  if(name==="calendar")renderCalendar();
+  if(name==="bookings")renderBookings();
+  if(name==="settings")renderSettings();
+}
+
+function closeSidebar(){
+  document.getElementById("sidebar").classList.remove("open");
+  document.getElementById("mobileOverlay").classList.remove("show");
+}
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("mobileOverlay").classList.toggle("show");
+}
+
+document.querySelectorAll("[data-section]").forEach(button=>{
+  button.addEventListener("click",()=>showSection(button.dataset.section));
+});
+document.querySelectorAll("[data-goto]").forEach(button=>{
+  button.addEventListener("click",()=>showSection(button.dataset.goto));
+});
+document.querySelectorAll("[data-external]").forEach(button=>{
+  button.addEventListener("click",()=>window.open(button.dataset.external,"_blank","noopener,noreferrer"));
+});
+document.getElementById("mobileMenu").addEventListener("click",toggleSidebar);
+document.getElementById("mobileOverlay").addEventListener("click",closeSidebar);
+
+/* CALENDAR */
+function changeMonth(amount){
+  currentMonth.setMonth(currentMonth.getMonth()+amount);
+  renderCalendar();
+}
+
+function renderCalendar(){
+  const year=currentMonth.getFullYear();
+  const month=currentMonth.getMonth();
+  document.getElementById("monthTitle").textContent=currentMonth.toLocaleDateString("en-GB",{month:"long",year:"numeric"});
+
+  const firstDay=new Date(year,month,1).getDay();
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  const previousMonthDays=new Date(year,month,0).getDate();
+  const today=todayKey();
+  let html="";
+
+  for(let i=0;i<42;i++){
+    let dayNumber,date,isOtherMonth=false;
+    if(i<firstDay){
+      dayNumber=previousMonthDays-firstDay+i+1;
+      date=new Date(year,month-1,dayNumber);isOtherMonth=true;
+    }else if(i>=firstDay+daysInMonth){
+      dayNumber=i-(firstDay+daysInMonth)+1;
+      date=new Date(year,month+1,dayNumber);isOtherMonth=true;
+    }else{
+      dayNumber=i-firstDay+1;
+      date=new Date(year,month,dayNumber);
+    }
+
+    const key=dateKey(date);
+    const status=getDayStatus(key);
+    const label=status==="available"?"Available":status==="full"?"Full":"Closed";
+    const classes=["day",status];
+    if(key===today)classes.push("today");
+    if(key===selectedDate)classes.push("selected");
+    if(isOtherMonth)classes.push("other-month");
+    if(key<today)classes.push("past");
+
+    html+=`
+      <button type="button" class="${classes.join(" ")}" data-date="${key}" aria-label="${escapeHTML(formatDate(key))}: ${label}">
+        <span class="day-number">${dayNumber}</span>
+        <span class="day-dot"></span>
+        <small>${label}</small>
+      </button>`;
+  }
+
+  document.getElementById("calendarDays").innerHTML=html;
+  updateDayEditor();
+}
+
+function selectDate(key){
+  selectedDate=key;
+  renderCalendar();
+}
+
+function updateDayEditor(){
+  document.getElementById("selectedDateLabel").textContent=formatDate(selectedDate);
+  const status=getDayStatus(selectedDate);
+  document.querySelectorAll('input[name="dayStatus"]').forEach(input=>input.checked=input.value===status);
+  document.getElementById("dayNote").value=calendarOverrides[selectedDate]?.note||"";
+}
+
+function saveDayStatus(){
+  const selected=document.querySelector('input[name="dayStatus"]:checked');
+  if(!selected){showToast("Choose a booking status.");return;}
+
+  const status=selected.value;
+  const activeCount=activeBookingsForDate(selectedDate).length;
+
+  if(status==="available"&&activeCount>=CAPACITY_PER_DAY){
+    showToast("This date already has 8 active bookings.");
+    return;
+  }
+  if(status==="available"&&getDefaultStatus(selectedDate)==="closed"){
+    showToast("This weekday is normally closed. Change its opening hours first.");
+    return;
+  }
+
+  calendarOverrides[selectedDate]={
+    status,
+    note:document.getElementById("dayNote").value.trim()
+  };
+
+  if(saveStorage()){
+    refreshAll();
+    showToast("Calendar status updated.");
+  }
+}
+
+function resetDayStatus(){
+  delete calendarOverrides[selectedDate];
+  if(saveStorage()){
+    refreshAll();
+    showToast("Date reset to normal business hours.");
+  }
+}
+
+document.getElementById("previousMonth").addEventListener("click",()=>changeMonth(-1));
+document.getElementById("nextMonth").addEventListener("click",()=>changeMonth(1));
+document.getElementById("calendarDays").addEventListener("click",event=>{
+  const button=event.target.closest("[data-date]");
+  if(button)selectDate(button.dataset.date);
+});
+document.getElementById("saveDayStatus").addEventListener("click",saveDayStatus);
+document.getElementById("resetDayStatus").addEventListener("click",resetDayStatus);
+
+/* BOOKING MODAL */
+const bookingModal=document.getElementById("bookingModal");
+const bookingForm=document.getElementById("bookingForm");
+const dateInput=document.getElementById("customerDate");
+const timeSelect=document.getElementById("customerTime");
+
+function openBookingModal(){
+  bookingForm.reset();
+  dateInput.min=todayKey();
+  dateInput.value=selectedDate>=todayKey()?selectedDate:todayKey();
+  updateTimeOptions();
+  bookingModal.classList.add("show");
+}
+function closeBookingModal(){bookingModal.classList.remove("show");}
+
+function timeToMinutes(value){
+  const [hours,minutes]=value.split(":").map(Number);
+  return hours*60+minutes;
+}
+function minutesToLabel(total){
+  const h=Math.floor(total/60);
+  const m=total%60;
+  const suffix=h>=12?"PM":"AM";
+  const hour=h%12||12;
+  return `${hour}:${String(m).padStart(2,"0")} ${suffix}`;
+}
+function updateTimeOptions(){
+  const key=dateInput.value;
+  timeSelect.innerHTML='<option value="">Select appointment time</option>';
+  if(!key)return;
+
+  if(getDayStatus(key)!=="available"){
+    timeSelect.innerHTML='<option value="">This date is not available</option>';
+    return;
+  }
+
+  const daySettings=settings[parseDate(key).getDay()];
+  if(!daySettings?.open)return;
+
+  const start=timeToMinutes(daySettings.start);
+  const end=timeToMinutes(daySettings.end);
+  const bookedTimes=activeBookingsForDate(key).map(b=>b.time);
+
+  for(let minutes=start;minutes<end;minutes+=60){
+    const label=minutesToLabel(minutes);
+    if(bookedTimes.includes(label))continue;
+    const option=document.createElement("option");
+    option.value=label;
+    option.textContent=label;
+    timeSelect.appendChild(option);
+  }
+
+  if(timeSelect.options.length===1){
+    timeSelect.innerHTML='<option value="">No available times for this date</option>';
+  }
+}
+
+document.getElementById("quickAdd").addEventListener("click",openBookingModal);
+document.getElementById("calendarAdd").addEventListener("click",openBookingModal);
+document.getElementById("bookingAdd").addEventListener("click",openBookingModal);
+document.getElementById("closeModal").addEventListener("click",closeBookingModal);
+document.getElementById("cancelModal").addEventListener("click",closeBookingModal);
+bookingModal.addEventListener("click",event=>{if(event.target===bookingModal)closeBookingModal();});
+dateInput.addEventListener("change",updateTimeOptions);
+
+bookingForm.addEventListener("submit",event=>{
+  event.preventDefault();
+
+  const date=dateInput.value;
+  const time=timeSelect.value;
+  const name=document.getElementById("customerName").value.trim();
+  const phone=document.getElementById("customerPhone").value.trim();
+  const service=document.getElementById("customerService").value;
+  const status=document.getElementById("customerStatus").value;
+
+  if(!name||!phone||!service||!date||!time){
+    showToast("Please complete all required fields.");
+    return;
+  }
+  if(date<todayKey()){
+    showToast("You cannot add an appointment in the past.");
+    return;
+  }
+  if(getDayStatus(date)!=="available"){
+    showToast("This date is not available.");
+    updateTimeOptions();
+    return;
+  }
+
+  const daySettings=settings[parseDate(date).getDay()];
+  const [hourText,minuteText]=time.split(":");
+  const match=time.match(/^(\d{1,2}):(\d{2})\s(AM|PM)$/i);
+  if(!match){showToast("Select a valid appointment time.");return;}
+  let hour=Number(match[1])%12;
+  if(match[3].toUpperCase()==="PM")hour+=12;
+  const selectedMinutes=hour*60+Number(match[2]);
+
+  if(!daySettings?.open||selectedMinutes<timeToMinutes(daySettings.start)||selectedMinutes>=timeToMinutes(daySettings.end)){
+    showToast("That time is outside business opening hours.");
+    return;
+  }
+
+  if(activeBookingsForDate(date).some(b=>b.time===time)){
+    showToast("There is already an appointment at this time.");
+    updateTimeOptions();
+    return;
+  }
+
+  if(activeBookingsForDate(date).length>=CAPACITY_PER_DAY){
+    showToast("This date has reached its daily booking limit.");
+    return;
+  }
+
+  const booking={
+    id:makeId(),name,phone,service,date,time,status,
+    note:document.getElementById("customerNote").value.trim(),
+    source:"admin",
+    createdAt:new Date().toISOString()
+  };
+
+  bookings.push(booking);
+
+  if(!saveStorage()){
+    bookings=bookings.filter(b=>b.id!==booking.id);
+    return;
+  }
+
+  closeBookingModal();
+  refreshAll();
+  showToast("Appointment saved successfully.");
+});
+
+/* BOOKING TABLE */
+function renderBookings(){
+  const search=(document.getElementById("bookingSearch").value||"").toLowerCase().trim();
+  const filter=document.getElementById("bookingFilter").value;
+
+  const filtered=[...bookings]
+    .filter(b=>(b.name+" "+b.phone+" "+b.service).toLowerCase().includes(search))
+    .filter(b=>filter==="all"||b.status===filter)
+    .sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+
+  const tbody=document.getElementById("bookingsTable");
+  const empty=document.getElementById("bookingEmpty");
+
+  tbody.innerHTML=filtered.map(b=>`
+    <tr>
+      <td><strong>${escapeHTML(b.name)}</strong><div class="table-muted">${escapeHTML(b.note||"No additional note")}</div></td>
+      <td>${escapeHTML(b.service)}</td>
+      <td>${escapeHTML(formatDate(b.date,{day:"numeric",month:"short",year:"numeric"}))}</td>
+      <td>${escapeHTML(b.time)}</td>
+      <td>${escapeHTML(b.phone)}</td>
+      <td>${statusBadge(b.status)}</td>
+      <td><div class="table-actions">
+        ${b.status!=="confirmed"&&b.status!=="cancelled"?`<button class="btn btn-green btn-small" data-action="confirm" data-id="${escapeHTML(b.id)}">Confirm</button>`:""}
+        ${b.status!=="cancelled"?`<button class="btn btn-danger btn-small" data-action="cancel" data-id="${escapeHTML(b.id)}">Cancel</button>`:""}
+        <button class="btn btn-light btn-small" data-action="delete" data-id="${escapeHTML(b.id)}">Delete</button>
+      </div></td>
+    </tr>
+  `).join("");
+
+  empty.style.display=filtered.length?"none":"block";
+}
+
+function updateBooking(id,status){
+  const booking=bookings.find(b=>b.id===id);
+  if(!booking)return;
+
+  if(status!=="confirmed"&&status!=="cancelled")return;
+
+  if(status==="confirmed"){
+    const conflict=bookings.some(b=>b.id!==id&&b.date===booking.date&&b.time===booking.time&&b.status!=="cancelled");
+    if(conflict){showToast("Another active booking already uses this time.");return;}
+    if(getDayStatus(booking.date)==="closed"||calendarOverrides[booking.date]?.status==="full"){
+      showToast("This date is marked unavailable. Review the calendar first.");
+      return;
+    }
+  }
+
+  booking.status=status;
+  if(saveStorage()){
+    refreshAll();
+    showToast(status==="confirmed"?"Appointment confirmed.":"Appointment cancelled.");
+  }
+}
+
+function deleteBooking(id){
+  if(!confirm("Delete this appointment permanently from this browser?"))return;
+  const previous=bookings;
+  bookings=bookings.filter(b=>b.id!==id);
+  if(saveStorage()){
+    refreshAll();
+    showToast("Appointment deleted.");
+  }else bookings=previous;
+}
+
+document.getElementById("bookingsTable").addEventListener("click",event=>{
+  const button=event.target.closest("[data-action]");
+  if(!button)return;
+  const {action,id}=button.dataset;
+  if(action==="confirm")updateBooking(id,"confirmed");
+  if(action==="cancel")updateBooking(id,"cancelled");
+  if(action==="delete")deleteBooking(id);
+});
+document.getElementById("bookingSearch").addEventListener("input",renderBookings);
+document.getElementById("bookingFilter").addEventListener("change",renderBookings);
+
+/* DASHBOARD */
+function renderDashboard(){
+  const confirmed=bookings.filter(b=>b.status==="confirmed").length;
+  let fullCount=0;
+  Object.keys(calendarOverrides).forEach(key=>{
+    if(getDayStatus(key)==="full")fullCount++;
+  });
+
+  const today=parseDate(todayKey());
+  let availableCount=0;
+  for(let i=0;i<30;i++){
+    const date=new Date(today);
+    date.setDate(today.getDate()+i);
+    if(getDayStatus(dateKey(date))==="available")availableCount++;
+  }
+
+  document.getElementById("totalBookings").textContent=bookings.length;
+  document.getElementById("confirmedBookings").textContent=confirmed;
+  document.getElementById("fullDays").textContent=fullCount;
+  document.getElementById("availableDays").textContent=availableCount;
+  document.getElementById("todayLabel").textContent=new Date().toLocaleDateString("en-GB",{
+    weekday:"long",day:"numeric",month:"long",year:"numeric"
+  });
+
+  const recent=[...bookings].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
+  const container=document.getElementById("recentBookings");
+
+  if(!recent.length){
+    container.innerHTML='<div class="empty-state">No bookings have been added yet.</div>';
+    return;
+  }
+
+  container.innerHTML=recent.map(b=>`
+    <div class="mini-booking">
+      <div><strong>${escapeHTML(b.name)}</strong><span>${escapeHTML(b.service)} · ${escapeHTML(formatDate(b.date,{day:"numeric",month:"short"}))} · ${escapeHTML(b.time)}</span></div>
+      ${statusBadge(b.status)}
+    </div>
+  `).join("");
+}
+
+/* BUSINESS SETTINGS */
+function renderSettings(){
+  document.getElementById("businessName").value=businessInfo.name;
+  document.getElementById("businessPhone").value=businessInfo.phone;
+  document.getElementById("businessLocation").value=businessInfo.location;
+  document.getElementById("businessInstagram").value=businessInfo.instagram;
+
+  document.getElementById("hoursEditor").innerHTML=weekdayNames.map((day,index)=>{
+    const item=settings[index];
+    return `
+      <div class="hours-row">
+        <div><strong>${day}</strong><label class="day-toggle"><input type="checkbox" id="open-${index}" ${item.open?"checked":""}> Open</label></div>
+        <input type="time" id="start-${index}" value="${escapeHTML(item.start)}" ${!item.open?"disabled":""} aria-label="${day} opening time">
+        <input type="time" id="end-${index}" value="${escapeHTML(item.end)}" ${!item.open?"disabled":""} aria-label="${day} closing time">
+      </div>`;
+  }).join("");
+
+  weekdayNames.forEach((_,index)=>{
+    document.getElementById(`open-${index}`).addEventListener("change",event=>{
+      document.getElementById(`start-${index}`).disabled=!event.target.checked;
+      document.getElementById(`end-${index}`).disabled=!event.target.checked;
+    });
+  });
+}
+
+function saveSettings(){
+  const updated={};
+
+  for(let index=0;index<7;index++){
+    const open=document.getElementById(`open-${index}`).checked;
+    const start=document.getElementById(`start-${index}`).value;
+    const end=document.getElementById(`end-${index}`).value;
+
+    if(open&&(!start||!end||start>=end)){
+      showToast(`Check the opening hours for ${weekdayNames[index]}.`);
+      return;
+    }
+    updated[index]={open,start:open?start:"",end:open?end:""};
+  }
+
+  settings=updated;
+  if(saveStorage()){
+    renderSettings();
+    refreshAll();
+    showToast("Opening hours saved.");
+  }
+}
+
+function saveBusinessInfo(){
+  const updated={
+    name:document.getElementById("businessName").value.trim(),
+    phone:document.getElementById("businessPhone").value.trim(),
+    location:document.getElementById("businessLocation").value.trim(),
+    instagram:document.getElementById("businessInstagram").value.trim()
+  };
+
+  if(!updated.name){showToast("Business name is required.");return;}
+  businessInfo=updated;
+  if(saveStorage())showToast("Business information saved.");
+}
+
+document.getElementById("saveSettingsButton").addEventListener("click",saveSettings);
+document.getElementById("saveBusinessInfo").addEventListener("click",saveBusinessInfo);
+
+/* EXPORT / IMPORT */
+function exportData(){
+  const data={
+    version:1,
+    bookings,
+    calendarOverrides,
+    settings,
+    businessInfo,
+    exportedAt:new Date().toISOString()
+  };
+
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="premium-barber-admin-backup.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  showToast("Admin backup exported.");
+}
+
+function importData(){
+  document.getElementById("importFile").click();
+}
+
+function handleImport(event){
+  const file=event.target.files?.[0];
+  if(!file)return;
+
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const data=JSON.parse(reader.result);
+      if(!data||!Array.isArray(data.bookings)||!data.calendarOverrides||typeof data.calendarOverrides!=="object"){
+        throw new Error("Invalid backup file.");
+      }
+
+      if(!confirm("Import this backup? It will replace the current admin data in this browser."))return;
+
+      const old={
+        bookings,calendarOverrides,settings,businessInfo
+      };
+
+      bookings=normalizeBookings(data.bookings);
+      calendarOverrides=normalizeCalendar(data.calendarOverrides);
+      settings=normalizeSettings(data.settings||defaultSettings);
+      businessInfo=normalizeBusiness(data.businessInfo||defaultBusiness);
+
+      if(saveStorage()){
+        renderSettings();
+        refreshAll();
+        showToast("Backup imported successfully.");
+      }else{
+        bookings=old.bookings;
+        calendarOverrides=old.calendarOverrides;
+        settings=old.settings;
+        businessInfo=old.businessInfo;
+      }
+    }catch(error){
+      showToast("That file is not a valid admin backup.");
+    }finally{
+      event.target.value="";
+    }
+  };
+  reader.readAsText(file);
+}
+
+document.getElementById("exportButton").addEventListener("click",exportData);
+document.getElementById("importButton").addEventListener("click",importData);
+document.getElementById("importFile").addEventListener("change",handleImport);
+
+document.getElementById("clearDemoButton").addEventListener("click",()=>{
+  if(!confirm("This will permanently clear all demo bookings, calendar overrides, and saved settings in this browser. Continue?"))return;
+
+  bookings=[];
+  calendarOverrides={};
+  settings=clone(defaultSettings);
+  businessInfo=clone(defaultBusiness);
+
+  if(saveStorage()){
+    renderSettings();
+    refreshAll();
+    showToast("Demo data cleared.");
+  }
+});
+
+/* CROSS-TAB DEMO SYNC
+   When the public booking page and admin page use the same origin,
+   changes in one tab are reflected in the other tab.
+*/
+window.addEventListener("storage",event=>{
+  if(!Object.values(STORAGE).includes(event.key))return;
+
+  bookings=normalizeBookings(readStorage(STORAGE.bookings,[]));
+  calendarOverrides=normalizeCalendar(readStorage(STORAGE.calendar,{}));
+  settings=normalizeSettings(readStorage(STORAGE.settings,defaultSettings));
+  businessInfo=normalizeBusiness(readStorage(STORAGE.business,defaultBusiness));
+
+  renderSettings();
+  refreshAll();
+  showToast("Booking information updated from another tab.");
+});
+
+/* INITIALIZE */
+document.getElementById("customerDate").min=todayKey();
+renderDashboard();
+renderCalendar();
+renderBookings();
+renderSettings();
+</script>
+</body>
+</html>
